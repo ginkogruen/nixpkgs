@@ -1,5 +1,7 @@
 {
   lib,
+  zstd,
+  pkg-config,
   rustPlatform,
   fetchFromGitHub,
   nix-update-script,
@@ -17,6 +19,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
   __structuredAttrs = true;
 
   cargoHash = "sha256-xTSLcORGg6nUzi+1Th74+/egs/zKT4qmnemLUosCtXQ=";
+
+  nativeBuildInputs = [ pkg-config ];
+
+  buildInputs = [ zstd ];
 
   prePatch = ''
     rm .cargo/config.toml
